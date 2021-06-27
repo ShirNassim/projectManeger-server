@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const dotenv = require('dotenv')
+
 dotenv.config()
 
 const mongooseOptions = {
@@ -15,7 +16,7 @@ const mongooseOptions = {
 mongoose.connect(process.env.DATABASE_URI, mongooseOptions)
     .then(() => {
         console.log("Database connection successful");
-
+        
         // Create express instance to setup API
         const ExpressLoader = require("./loaders/express.loader");
         new ExpressLoader();
