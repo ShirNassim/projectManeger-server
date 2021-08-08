@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
-const dotenv = require('dotenv')
+import {connect } from 'mongoose';
+import * as dotenv from 'dotenv';
+import endpoint from './endpoints.config';
 
 dotenv.config()
 
@@ -9,11 +10,9 @@ const mongooseOptions = {
     useUnifiedTopology: true,
 };
 
-
-
 // Connect to the DB an initialize the app if successful
 
-mongoose.connect(process.env.DATABASE_URI, mongooseOptions)
+connect(endpoint.DatabaseUrl, mongooseOptions)
     .then(() => {
         console.log("Database connection successful");
         
@@ -26,3 +25,4 @@ mongoose.connect(process.env.DATABASE_URI, mongooseOptions)
         console.error(err);
 
     });
+
